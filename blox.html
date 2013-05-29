@@ -1,72 +1,71 @@
 <!doctype html>
  
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>jQuery UI Selectable - Serialize</title>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
- 
-  <style>
-  #feedback { font-size: 1.4em; }
-  #selectable .ui-selecting { background: #FECA40; width: 11px; height: 11px;}
-  #selectable .ui-selected { border-color: yellow; background: #FECA40; width: 12px; height: 12px;}
-  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; background: #FECA40;}
-  #selectable li { margin: 3px; padding: 1px; float: left; width: 10px; height: 10px; font-size: 4em;background: #FECA40; }
-  </style>
-  <script>
-  $(function() {
-    $( "#selectable" ).selectable({
-      stop: function() {
-        var result = $( "#select-result" ).empty();
-        $( ".ui-selected", this ).each(function() {
-          var index = $( "#selectable li" ).index( this );
-          result.append( " #" + ( index + 1 ) );
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Selectable - Serialize</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script>
+      $(function() {
+        $( "#selectable" ).selectable({
+          stop: function() {
+            var result = $( "#select-result" ).empty();
+            $( ".ui-selected", this ).each(function() {
+              var index = $( "#selectable li" ).index( this );
+              result.append( " #" + ( index + 1 ) );
+            });
+          }
         });
-      }
-    });
-  });
-  </script>
-</head>
-<body>
- 
-<p id="feedback">
-<span>You've selected:</span> <span id="select-result">none</span>.
-</p>
- 
-<ol id="selectable">
-  <li class="ui-widget-content" style="background-color: #660000 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #990000 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #990000 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #cc0000 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #cc3333 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #ea4c88 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #993399 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #663399 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #333399 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #0066cc !important;"></li>
-  <li class="ui-widget-content" style="background-color: #0099cc !important;"></li>
-  <li class="ui-widget-content" style="background-color: #66cccc !important;"></li>
-  <li class="ui-widget-content" style="background-color: #77cc33 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #669900 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #336600 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #666600 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #999900 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #cccc33 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #ffff00 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #ffcc33 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #ff9900 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #ff6600 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #cc6633 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #996633 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #663300 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #000000 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #999999 !important;"></li>
-  <li class="ui-widget-content" style="background-color: #cccccc !important;"></li>
-  <li class="ui-widget-content" style="background-color: #ffffff !important;"></li>
-</ol>
- 
-</body>
+      });
+
+      colors = [
+          "#660000",
+          "#990000",
+          "#990000",
+          "#cc0000",
+          "#cc3333",
+          "#ea4c88",
+          "#993399",
+          "#663399",
+          "#333399",
+          "#0066cc",
+          "#0099cc",
+          "#66cccc",
+          "#77cc33",
+          "#669900",
+          "#336600",
+          "#666600",
+          "#999900",
+          "#cccc33",
+          "#ffff00",
+          "#ffcc33",
+          "#ff9900",
+          "#ff6600",
+          "#cc6633",
+          "#996633",
+          "#663300",
+          "#000000",
+          "#999999",
+          "#cccccc",
+          "#ffffff"
+        ];
+    </script>
+  </head>
+  <body>
+   
+    <p id="feedback">
+      <span>You've selected:</span> <span id="select-result">none</span>.
+    </p>
+     
+    <ol id="selectable">
+      <script>
+        for (var i = 0; i < colors.length; i++) {
+          document.write("<li class='ui-widget-content' style='background-color: " + colors[i] + "'></li>");
+        }
+      </script>
+    </ol>
+  </body>
 </html>
