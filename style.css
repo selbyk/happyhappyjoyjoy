@@ -1,0 +1,32 @@
+#feedback { font-size: 1.4em; }
+
+#selectable .ui-selecting {
+  background: #FECA40;
+  width: 11px;
+  height: 11px;
+}
+
+#selectable .ui-selected {
+  border-color: yellow;
+  background: #FECA40;
+  width: 12px;
+  height: 12px;
+}
+
+#selectable {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60%;
+  background: #FECA40;
+}
+
+#selectable li {
+  margin: 3px;
+  padding: 1px;
+  float: left;
+  width: 10px;
+  height: 10px;
+  font-size: 4em;
+  background: #FECA40;
+}
